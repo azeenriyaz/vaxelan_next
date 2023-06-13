@@ -1,0 +1,16 @@
+.wrapper, body, html {
+    min-height: 100vh;
+    max-width: 100vw;
+}
+
+.navbar {
+    min-width: 40px;
+}
+
+.content_container {
+    min-height: calc(100vh + 30px - (3 * 45px));
+}
+
+textarea {
+    height: 300px;
+}

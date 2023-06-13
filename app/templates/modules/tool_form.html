@@ -1,0 +1,44 @@
+{% block content %}
+<hr id="info-separator">
+
+<form action="/" method="POST" enctype="multipart/form-data">
+    <div class="form-group">
+      <div class="form-group">
+        {{ form.fasta_text.label(class="form-control-label")}}          
+        {{ form.fasta_text(class="form-control form-control-lg")}}
+        </div>
+      <div class="invalid-feedback">
+        Invalid Sequence.
+    </div>
+      <small id="fasta_text_note" class="form-text text-muted">Please make sure the FASTA sequence is valid.</small>
+    </div>
+    <div class="row mt-3">
+      <button class="btn btn-outline-secondary m-3 col-sm" id="example-btn" type="button">Example 1</button>
+    </div>
+    <div class="form-group m-3">
+        {{ form.fasta_file(class="form-control") }}
+          <div class="invalid-feedback">
+            File size should not be more than 50 KB.
+        </div>
+      </div>
+      {% with messages = get_flashed_messages(with_categories = True) %}
+      {% if messages %}
+      {% for category, message in messages %}
+      <div class="alert alert-{{category}}">
+        {{ message }}
+      </div>
+      {% endfor %}
+      {% endif %}
+      {% endwith %}
+
+      {% if testing == False %}
+      <div id="recaptcha-container">
+        <div class="g-recaptcha mt-4" data-sitekey="6LfE8kgkAAAAAC28e3AJCdCHTKVNjXds9QzfHYan"></div>
+        <div class="invalid-feedback" id="recaptcha-warning">Please confirm the recaptcha.</div>
+      </div>
+      {% endif %}
+
+    <button type="submit" class="btn btn-outline-dark m-2 mt-4 w-100" id="submit">Submit</button>
+  </form>
+
+{% endblock content %}
